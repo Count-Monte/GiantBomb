@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml">
+
+    <fragment
+        android:id="@+id/main_fragment"
+        android:name="com.elsa.giantbomb.fragments.MainFragment"
+        android:label="Game List"
+        tools:layout="@layout/fragment_main">
+    </fragment>
+
+</navigation>
