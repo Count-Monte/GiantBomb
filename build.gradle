@@ -3,8 +3,15 @@
 buildscript {
     ext {
         versions = [
-            androidx_navigation: "2.5.2"
+            androidx_navigation: "2.5.2",
+            moshi: "1.13.0",
+            shimmer: "0.5.0",
+            glide: "4.13.0",
+            retrofit: "2.9.0",
         ]
+    }
+    dependencies {
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$versions.androidx_navigation")
     }
 }
 
