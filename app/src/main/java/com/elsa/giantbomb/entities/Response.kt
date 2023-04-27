@@ -7,6 +7,17 @@ import com.squareup.moshi.Json
 
 
 class Response {
+    @JsonClass(generateAdapter = true)
+    data class GameResult(
+        @Json(name = "error") val error: String,
+        @Json(name = "limit") val limit : Int,
+        @Json(name = "offset") val offset : Int,
+        @Json(name = "number_of_page_results") val numberOfPageResults: Int,
+        @Json(name = "number_of_total_results") val numberOfTotalResults: Int,
+        @Json(name = "status_code") val statusCode: Int,
+        @Json(name = "results") val results: List<GameItem>
+    )
+
     @Parcelize
     @JsonClass(generateAdapter = true)
     data class GameItem(

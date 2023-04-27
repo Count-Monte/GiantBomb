@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Project/Kotlin/GiantBomb/app/src/main/res/drawable-v24/background_gif_placeholder.xml" value="0.1605" />
         <entry key="..\:/Project/Kotlin/GiantBomb/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Project/Kotlin/GiantBomb/app/src/main/res/layout/fragment_main.xml" value="0.22" />
         <entry key="..\:/Project/Kotlin/GiantBomb/app/src/main/res/layout/row_game_item.xml" value="0.5" />

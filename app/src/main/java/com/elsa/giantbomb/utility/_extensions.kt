@@ -76,7 +76,7 @@ fun swapVisibility(duration: Long, visibleView: View, vararg invisibleViews: Vie
         }
     }
     valueAnimator.addListener(object : AnimatorListenerAdapter() {
-        override fun onAnimationEnd(animation: Animator?) {
+        override fun onAnimationEnd(animation: Animator) {
             invisibleViews.forEach { it.visibility = View.GONE}
         }
     })
