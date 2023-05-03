@@ -1,18 +1,24 @@
 package com.elsa.giantbomb.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.elsa.giantbomb.adapters.GameListAdapter
 import com.elsa.giantbomb.databinding.FragmentMainBinding
+import com.elsa.giantbomb.entities.LoadResult
+import com.elsa.giantbomb.viewModels.MainViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment: Fragment() {
 
     private var dataFetched: Boolean = false;
     private lateinit var binding: FragmentMainBinding
     private val adapter = GameListAdapter()
+    private val viewModel by viewModel<MainViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,14 +34,31 @@ class MainFragment: Fragment() {
 
         binding.recyclerView.adapter = adapter
         binding.btnSearch.setOnClickListener {
+            Log.w("1", "Search Clicked")
             searchGameResult()
         }
         binding.btnRetry.setOnClickListener {
             searchGameResult()
         }
+
+        viewModel.gameList.observe(viewLifecycleOwner) {
+            dataFetched = true
+            adapter.updateKeyword(viewModel.keyword)
+            adapter.submitList(it)
+        }
+        viewModel.loading.observe(viewLifecycleOwner) {
+            binding.progressBar.isVisible = it == LoadResult.LOADING
+            binding.recyclerView.isVisible = it == LoadResult.SUCCESS
+            binding.errorViews.isVisible = it == LoadResult.FAILURE
+        }
+
+        if (savedInstanceState == null && !dataFetched) {
+            viewModel.fetchGameResult("")
+        }
     }
 
     private fun searchGameResult() {
         val keyword = binding.searchEditText.text.toString()
+        viewModel.fetchGameResult(keyword)
     }
 }

@@ -8,6 +8,9 @@ buildscript {
             shimmer: "0.5.0",
             glide: "4.13.0",
             retrofit: "2.9.0",
+            koin: "3.1.2",
+            ok_http: "4.9.1",
+
         ]
     }
     dependencies {
