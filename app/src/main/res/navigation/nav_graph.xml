@@ -10,6 +10,19 @@
         android:name="com.elsa.giantbomb.fragments.MainFragment"
         android:label="Game List"
         tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_detailFragment"
+            app:destination="@id/detail_fragment">
+            <argument
+                android:name="arg_game_item"
+                app:argType="com.elsa.giantbomb.entities.Response$GameItem" />
+        </action>
     </fragment>
+
+    <fragment
+        android:id="@+id/detail_fragment"
+        android:name="com.elsa.giantbomb.fragments.DetailFragment"
+        android:label="Game Detail"
+        tools:layout="@layout/fragment_detail" />
 
 </navigation>

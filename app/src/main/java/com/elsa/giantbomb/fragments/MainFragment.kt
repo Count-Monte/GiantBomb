@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.elsa.giantbomb.R
 import com.elsa.giantbomb.adapters.GameListAdapter
 import com.elsa.giantbomb.databinding.FragmentMainBinding
 import com.elsa.giantbomb.entities.LoadResult
@@ -39,6 +41,16 @@ class MainFragment: Fragment() {
         }
         binding.btnRetry.setOnClickListener {
             searchGameResult()
+        }
+
+        adapter.setItemClickListener {
+            Log.w("!@#","!@#");
+            val bundle = Bundle().apply {
+                putParcelable(DetailFragment.ARG_GAME_ITEM, it)
+            }
+            Log.w("debug", "Click on Item");
+            Log.w("debug", bundle.toString());
+            findNavController().navigate(R.id.action_detailFragment, bundle)
         }
 
         viewModel.gameList.observe(viewLifecycleOwner) {
